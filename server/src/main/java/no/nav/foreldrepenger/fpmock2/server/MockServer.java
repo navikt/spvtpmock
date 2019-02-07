@@ -84,7 +84,7 @@ public class MockServer {
 
     public void start() throws Exception {
         startLdapServer();
-        startKafkaServer();
+        //startKafkaServer();
         startWebServer();
     }
 
@@ -109,9 +109,9 @@ public class MockServer {
         addSoapServices(testScenarioRepository, templateRepository, journalRepository, gsakRepo);
     }
 
-    private void startKafkaServer() {
+    /*private void startKafkaServer() {
         LocalKafkaServer.startKafka(2181, 9092, List.of("inntektsmelding", "sykepengesoeknad", "tulletopic"));
-    }
+    }*/
 
     private void startLdapServer() {
         Thread ldapThread = new Thread(() -> ldapServer.start(), "LdapServer");

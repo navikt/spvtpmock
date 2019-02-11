@@ -109,6 +109,9 @@ public class TestscenarioTemplateRepositoryImpl implements TestscenarioTemplateR
 
     @Override
     public TestscenarioTemplate finn(String templateKey) {
+        if ("true".equals(System.getProperty("scenarios.reload"))) {
+            load();
+        }
         return testTemplates.get(templateKey);
     }
 

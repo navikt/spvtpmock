@@ -33,9 +33,12 @@ public class RestSTSService {
         @FormParam("realm") String realm,
         @FormParam("code") String code,
         @FormParam("redirect_uri") String redirectUri) {
-        // dummy sikkerhet, returnerer alltid en idToken/refresh_token
+        // dummy sikkerhet, returnerer alltid en idToken=accessToken/refresh_token
         String token = createIdToken(req);
-        Oauth2AccessTokenResponse oauthResponse = new Oauth2AccessTokenResponse(token, UUID.randomUUID().toString(), "SlippMegInn");
+        Oauth2AccessTokenResponse oauthResponse = new Oauth2AccessTokenResponse(
+                token,
+                UUID.randomUUID().toString(),
+                token);
         return Response.ok(oauthResponse).build();
     }
 

@@ -81,10 +81,10 @@ public class PersonServiceMockImpl implements PersonV3 {
         PersonModell bruker = finnPerson(aktoer);
 
         HentPersonResponse response = new HentPersonResponse();
-        Bruker person = new PersonAdapter().fra(bruker);
-        
+        Bruker person = new PersonAdapter().fra(bruker, hentPersonRequest.getInformasjonsbehov().toArray(new Informasjonsbehov[]{}));
+
         Personopplysninger pers = repo.getPersonIndeks().finnPersonopplysningerByIdent(bruker.getIdent());
-        
+
         List<Familierelasjon> familierelasjoner = new FamilierelasjonAdapter().tilFamilerelasjon(pers.getFamilierelasjoner());
         familierelasjoner.forEach(fr -> person.getHarFraRolleI().add(fr));
         

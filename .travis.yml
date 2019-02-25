@@ -19,6 +19,7 @@ script:
 after_success:
   - |
     curl -X POST -H 'Content-Type: application/json' -H 'Accept: application/json' -H 'Travis-API-Version: 3' -H 'Authorization: token $TRAVIS_API_TOKEN' -d '{"request": {"branch":"master"}}' https://api.travis-ci.com/repo/navikt%2Fhelse-e2e/requests
+    sleep 5
 env:
   global:
   - DOCKER_IMG_NAME=navikt/spvtpmock

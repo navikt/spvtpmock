@@ -107,7 +107,7 @@ public class ArbeidsforholdMockImpl implements ArbeidsforholdV3 {
 
             ArbeidsforholdAdapter arbeidsforholdAdapter = new ArbeidsforholdAdapter();
 
-            String fnr = request.getIdent().getIdent();
+            String fnr = scenarioRepository.getPersonIndeks().finnByAktørIdent(request.getIdent().getIdent()).getIdent();
             Optional<InntektYtelseModell> inntektYtelseModell = scenarioRepository.getInntektYtelseModell(fnr);
 
             if(inntektYtelseModell.isPresent() && inntektYtelseModell.get().getArbeidsforholdModell() != null){

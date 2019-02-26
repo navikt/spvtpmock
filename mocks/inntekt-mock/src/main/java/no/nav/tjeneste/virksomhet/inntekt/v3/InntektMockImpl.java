@@ -195,8 +195,7 @@ public class InntektMockImpl implements InntektV3 {
         if (aktoer instanceof PersonIdent) {
             return ((PersonIdent) aktoer).getPersonIdent();
         } else if (aktoer instanceof AktoerId) {
-            //TODO: Konverter AktoerId til PersonIdent
-            throw new UnsupportedOperationException("AktoerId ikke støttet PT");
+            return scenarioRepository.getPersonIndeks().finnByAktørIdent(((AktoerId) aktoer).getAktoerId()).getIdent();
         } else {
             throw new UnsupportedOperationException("Aktoertype ikke støttet");
         }

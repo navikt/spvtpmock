@@ -1,5 +1,6 @@
 package no.nav.tjeneste.virksomhet.arbeidsforhold.v3;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -115,7 +116,13 @@ public class ArbeidsforholdMockImpl implements ArbeidsforholdV3 {
                 List<Arbeidsforhold> responseArbeidsforhold = new ArrayList<>();
 
                 for(no.nav.foreldrepenger.fpmock2.testmodell.inntektytelse.arbeidsforhold.Arbeidsforhold arbeidsforhold : arbeidsforholdModell.getArbeidsforhold()){
-                    responseArbeidsforhold.add(arbeidsforholdAdapter.fra(fnr, arbeidsforhold));
+                    LocalDate fom = request.getArbeidsforholdIPeriode().getFom().toGregorianCalendar().toZonedDateTime().toLocalDate();
+                    LocalDate tom = request.getArbeidsforholdIPeriode().getTom().toGregorianCalendar().toZonedDateTime().toLocalDate();
+                    LocalDate anFom = arbeidsforhold.getAnsettelsesperiodeFom();
+                    LocalDate anTom = arbeidsforhold.getAnsettelsesperiodeTom();
+                    if (fom.compareTo(anFom)>=0 && tom.compareTo(anTom)<=0) {
+                        responseArbeidsforhold.add(arbeidsforholdAdapter.fra(fnr, arbeidsforhold));
+                    }
                 }
 
                 FinnArbeidsforholdPrArbeidstakerResponse response = new FinnArbeidsforholdPrArbeidstakerResponse();

@@ -119,7 +119,7 @@ public class ArbeidsforholdMockImpl implements ArbeidsforholdV3 {
                     LocalDate fom = request.getArbeidsforholdIPeriode().getFom().toGregorianCalendar().toZonedDateTime().toLocalDate();
                     LocalDate tom = request.getArbeidsforholdIPeriode().getTom().toGregorianCalendar().toZonedDateTime().toLocalDate();
                     LocalDate anFom = arbeidsforhold.getAnsettelsesperiodeFom();
-                    LocalDate anTom = arbeidsforhold.getAnsettelsesperiodeTom();
+                    LocalDate anTom = (arbeidsforhold.getAnsettelsesperiodeTom()!=null) ? arbeidsforhold.getAnsettelsesperiodeTom() : LocalDate.MAX;
                     if (fom.compareTo(anFom)>=0 && tom.compareTo(anTom)<=0) {
                         responseArbeidsforhold.add(arbeidsforholdAdapter.fra(fnr, arbeidsforhold));
                     }

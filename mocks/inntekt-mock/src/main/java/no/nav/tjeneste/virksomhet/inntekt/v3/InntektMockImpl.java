@@ -104,7 +104,7 @@ public class InntektMockImpl implements InntektV3 {
                 if (inntektYtelseModell.isPresent()) {
                     InntektskomponentModell modell = inntektYtelseModell.get().getInntektskomponentModell();
 
-                    ArbeidsInntektIdent arbeidsInntektIdent = HentInntektlistBolkMapper.makeArbeidsInntektIdent(modell, fnr);
+                    ArbeidsInntektIdent arbeidsInntektIdent = HentInntektlistBolkMapper.makeArbeidsInntektIdent(modell, fnr, aktoer);
                     List<ArbeidsInntektMaaned> listeOnskedeMnd = new ArrayList<>();
                     for (ArbeidsInntektMaaned aarMaaned : arbeidsInntektIdent.getArbeidsInntektMaaned()) {
                         XMLGregorianCalendar am = aarMaaned.getAarMaaned();

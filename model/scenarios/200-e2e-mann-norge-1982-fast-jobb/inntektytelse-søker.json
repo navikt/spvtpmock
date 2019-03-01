@@ -71,13 +71,13 @@
 			{
 				"arbeidsforholdId": "ARB001-001",
 				"arbeidsforholdIdNav": "1238161",
-				"ansettelsesperiodeFom": "now() - P5M",
+				"ansettelsesperiodeFom": "now() - P24M",
 				"arbeidsforholdstype": "ordinaertArbeidsforhold",
 				"arbeidsgiverOrgnr": "910825518",
 
 				"arbeidsavtaler" : [
 					{
-						"fomGyldighetsperiode": "now() - P5M",
+						"fomGyldighetsperiode": "now() - P24M",
 						"sisteLønnsendringsdato": "now() - P1M",
 						"avlønningstype": "fastlønn",
 						"avtaltArbeidstimerPerUke": "40",

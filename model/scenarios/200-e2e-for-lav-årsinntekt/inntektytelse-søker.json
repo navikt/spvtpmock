@@ -38,27 +38,9 @@
 				"beskrivelse": "fastloenn"
 			},
 			{
-				"fom": "now() - P4M",
-				"tom": "now() - P3M",
-				"beløp": 19000,
-				"orgnr": "910825518",
-				"type": "Lønnsinntekt",
-				"fordel": "kontantytelse",
-				"beskrivelse": "fastloenn"
-			},
-			{
 				"fom": "now() - P3M",
 				"tom": "now() - P2M",
 				"beløp": 19500,
-				"orgnr": "910825518",
-				"type": "Lønnsinntekt",
-				"fordel": "kontantytelse",
-				"beskrivelse": "fastloenn"
-			},
-			{
-				"fom": "now() - P2M",
-				"tom": "now() - P1M",
-				"beløp": 20000,
 				"orgnr": "910825518",
 				"type": "Lønnsinntekt",
 				"fordel": "kontantytelse",

@@ -29,7 +29,7 @@
 	"inntektskomponent": {
 		"inntektsperioder": [
 			{
-				"fom": "now() - P2M",
+				"fom": "now() - P24M",
 				"tom": "now() - P1M",
 				"beløp": 25000,
 				"orgnr": "995816598",

@@ -27,4 +27,16 @@
   "adresseLinje1" : "President Avenue",
   "adresseLinje2" : "Central district",
   "adresseLinje3" : "USA"
-} ]
+},
+  {
+    "@type" : "gateadresse",
+    "adresseType" : "BOSTEDSADRESSE",
+    "land" : "SWE",
+    "gatenavn" : "Pippi Langstrømp",
+    "gatenummer" : 7,
+    "husbokstav" : "B",
+    "husnummer" : 4,
+    "postnummer" : "1111"
+  }
+]
+

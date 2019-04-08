@@ -5,7 +5,14 @@ import java.time.LocalDate;
 import java.time.ZoneOffset;
 import java.util.Date;
 
+import org.jose4j.json.internal.json_simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.unboundid.util.json.JSONException;
+import com.unboundid.util.json.JSONObject;
+import com.unboundid.util.json.JSONObjectReader;
 
 import no.nav.foreldrepenger.autotest.foreldrepenger.FpsakTestBase;
 import no.nav.foreldrepenger.autotest.klienter.sparkel.FakeAccessTokenKlient;
@@ -29,14 +36,20 @@ public class SparkelEksempel extends FpsakTestBase {
 
     @Test
     public void hentInntektslisteViaSparkel() throws IOException {
-        TestscenarioDto testscenario = opprettScenario("50");
+        TestscenarioDto testscenario = opprettScenario("201");
 
         final String aktørId = testscenario.getPersonopplysninger().getSøkerAktørIdent();
 
         Object o = lagSparkelKlient().hentInntektsliste(aktørId,
             Date.from(LocalDate.ofYearDay(2019,1).atStartOfDay().toInstant(ZoneOffset.UTC)),
             new Date());
-        System.out.println(o);
+        //System.out.println(o);
+        printAsPrettyJSON(o);
+    }
+
+    private void printAsPrettyJSON(Object o) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writerWithDefaultPrettyPrinter().writeValue(System.out, o);
     }
 
     @Test
@@ -91,6 +104,19 @@ public class SparkelEksempel extends FpsakTestBase {
         Object o = lagSparkelKlient().hentSykepengeliste(aktørId,
             Date.from(LocalDate.ofYearDay(2017,1).atStartOfDay().toInstant(ZoneOffset.UTC)),
             new Date());
+        System.out.println(o);
+    }
+
+    @Test
+    public void hentInfotrygdBeregningsgrunnlagViaSparkel() throws IOException {
+        TestscenarioDto testscenario = opprettScenario("101");
+
+        final String aktørId = testscenario.getPersonopplysninger().getSøkerAktørIdent();
+        final String fnr = testscenario.getPersonopplysninger().getSøkerIdent();
+
+        Object o = lagSparkelKlient().finnGrunnlagListe(aktørId,
+                Date.from(LocalDate.ofYearDay(2017,1).atStartOfDay().toInstant(ZoneOffset.UTC)),
+                new Date());
         System.out.println(o);
     }
 

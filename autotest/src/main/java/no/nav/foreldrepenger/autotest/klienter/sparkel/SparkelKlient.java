@@ -40,6 +40,7 @@ public class SparkelKlient extends JsonRest {
     private static String HENT_PERSON_URL = "/api/person/%s";
     private static String HENT_PERSON_HISTORIKK_URL = "/api/person/%s/history";
     private static String HENT_SYKEPENGELISTE_URL = "/api/sykepengevedtak/%s?fom=%tF&tom=%tF";
+    private static String FINN_GRUNNLAGLISTE_URL = "/api/infotrygdberegningsgrunnlag/%s?fom=%tF&tom=%tF";
 
 
     public Object hentArbeidsforhold(String aktørId, Date fom, Date tom) throws IOException {
@@ -96,6 +97,11 @@ public class SparkelKlient extends JsonRest {
 
     public Object hentSykepengeliste(String aktørId, Date fom, Date tom) throws IOException {
         final String url = hentRestRotUrl() + String.format(HENT_SYKEPENGELISTE_URL, aktørId, fom, tom);
+        return getOgHentJson(url, Object.class, StatusRange.STATUS_200);
+    }
+
+    public Object finnGrunnlagListe(String aktørId, Date fom, Date tom) throws IOException {
+        final String url = hentRestRotUrl() + String.format(FINN_GRUNNLAGLISTE_URL, aktørId, fom, tom);
         return getOgHentJson(url, Object.class, StatusRange.STATUS_200);
     }
 

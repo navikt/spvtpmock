@@ -8,13 +8,14 @@ import no.nav.foreldrepenger.fpmock2.testmodell.organisasjon.OrganisasjonModell;
 import no.nav.tjeneste.virksomhet.organisasjon.v5.informasjon.Organisasjon;
 import no.nav.tjeneste.virksomhet.organisasjon.v5.informasjon.OrganisasjonsDetaljer;
 import no.nav.tjeneste.virksomhet.organisasjon.v5.informasjon.UstrukturertNavn;
+import no.nav.tjeneste.virksomhet.organisasjon.v5.informasjon.Virksomhet;
 
 public class OrganisasjonsMapper {
     public OrganisasjonsMapper() {
     }
 
     public static Organisasjon mapOrganisasjonFraModell(OrganisasjonModell modell) {
-        Organisasjon organisasjon = new Organisasjon();
+        Organisasjon organisasjon = new Virksomhet(); // TODO: Skulle hatt mulighet til å returnere forskjellige sub-typer ?
         organisasjon.setOrgnummer(modell.getOrgnummer());
         UstrukturertNavn ustrukturertNavn = new UstrukturertNavn();
         ustrukturertNavn.getNavnelinje().addAll(Arrays.asList(modell.getNavn().getNavnelinje()));

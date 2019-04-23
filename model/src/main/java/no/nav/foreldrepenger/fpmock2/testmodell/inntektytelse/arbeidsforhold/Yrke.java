@@ -1,14 +1,17 @@
 package no.nav.foreldrepenger.fpmock2.testmodell.inntektytelse.arbeidsforhold;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Yrke {
 
-    private String yrke;
+    @JsonProperty
+    private String value;
 
-    public String getYrke() {
-        return yrke;
+    public String getValue() {
+        return value;
     }
 
-    public void setYrke(String yrke) {
-        this.yrke = yrke;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

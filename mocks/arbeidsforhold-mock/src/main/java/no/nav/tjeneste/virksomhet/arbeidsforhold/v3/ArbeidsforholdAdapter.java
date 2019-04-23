@@ -15,6 +15,7 @@ import no.nav.tjeneste.virksomhet.arbeidsforhold.v3.informasjon.arbeidsforhold.N
 import no.nav.tjeneste.virksomhet.arbeidsforhold.v3.informasjon.arbeidsforhold.ObjectFactory;
 import no.nav.tjeneste.virksomhet.arbeidsforhold.v3.informasjon.arbeidsforhold.Organisasjon;
 import no.nav.tjeneste.virksomhet.arbeidsforhold.v3.informasjon.arbeidsforhold.Person;
+import no.nav.tjeneste.virksomhet.arbeidsforhold.v3.informasjon.arbeidsforhold.Yrker;
 
 /**
  * Enkel førsteutgave i påvente av infrastruktur for å generere org.nr. Gir et svar med to arbeidsforhold.
@@ -73,7 +74,11 @@ public class ArbeidsforholdAdapter {
         arbeidsavtale.setBeregnetAntallTimerPrUke(lagBD(arbeidsavtaleModell.getBeregnetAntallTimerPerUke()));
         arbeidsavtale.setSisteLoennsendringsdato(ConversionUtils.convertToXMLGregorianCalendar(arbeidsavtaleModell.getSisteLønnnsendringsdato()));
         arbeidsavtale.setFomGyldighetsperiode(ConversionUtils.convertToXMLGregorianCalendar(arbeidsavtaleModell.getFomGyldighetsperiode()));
-
+        if (arbeidsavtaleModell.getYrke() != null) {
+            Yrker yrke = new Yrker();
+            yrke.setValue(arbeidsavtaleModell.getYrke().getValue());
+            arbeidsavtale.setYrke(yrke);
+        }
 
         return arbeidsavtale;
     }
